@@ -11,7 +11,7 @@ import (
 )
 
 func producerHandler(kafkaWriter *kafka.Writer) func(http.ResponseWriter, *http.Request) {
-	return http.HandleFunc(func(wrt http.ResponseWriter, req *http.Request) {
+	return http.HandlerFunc(func(wrt http.ResponseWriter, req *http.Request) {
 		body, err := ioutil.ReadAll(req.Body)
 		if err != nil {
 			log.Fatalln(err)
